@@ -21,7 +21,6 @@ const navItems = [
   { label: 'Invoice', to: '/invoice' },
   { label: 'Tasks', to: '/tasks' },
   { label: 'Calendar', to: '/calendar' },
-  { label: 'Auth', to: '/auth' },
 ]
 
 function Card({ label, value, sub }) {
@@ -229,30 +228,6 @@ function CalendarPage() {
   )
 }
 
-function AuthPage() {
-  const [tab, setTab] = useState('login')
-
-  return (
-    <div className="flex justify-center p-6">
-      <div className="w-full max-w-md rounded-xl border border-gray-100 bg-white p-8 shadow-sm">
-        <div className="mb-6 flex overflow-hidden rounded-lg border border-gray-200">
-          {['login', 'register'].map((current) => (
-            <button key={current} onClick={() => setTab(current)} className={`flex-1 py-2 text-sm font-medium capitalize transition-colors ${tab === current ? 'bg-blue-600 text-white' : 'text-gray-600 hover:bg-gray-50'}`}>
-              {current}
-            </button>
-          ))}
-        </div>
-        <div className="space-y-4">
-          {tab === 'register' ? <input className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm outline-none" placeholder="Full Name" /> : null}
-          <input className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm outline-none" placeholder="Email" />
-          <input className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm outline-none" placeholder="Password" type="password" />
-          <button className="w-full rounded-lg bg-blue-600 py-2.5 text-sm font-medium text-white hover:bg-blue-700">{tab === 'login' ? 'Sign In' : 'Create Account'}</button>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 function PagesPage() {
   return (
     <DashboardShell title="Pages" subtitle="Library">
@@ -327,7 +302,6 @@ export default function App() {
           <Route path="/invoice" element={<InvoicePage />} />
           <Route path="/tasks" element={<TasksPage />} />
           <Route path="/calendar" element={<CalendarPage />} />
-          <Route path="/auth" element={<AuthPage />} />
           <Route path="*" element={<Navigate to="/dashboard/crypto" replace />} />
         </Route>
       </Routes>
